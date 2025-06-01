@@ -1,5 +1,7 @@
 Flask==2.2.5
 gunicorn==20.1.0
-tensorflow==2.18.0
-keras==2.18.0
+tensorflow==2.18.0  # Updated for Python 3.10+ compatibility
+keras==2.18.0       # Matches the updated TensorFlow version
+numpy>=1.21.0       # Required by TensorFlow
+
 
