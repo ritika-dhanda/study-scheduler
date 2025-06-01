@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Smart Study Scheduler</title>
+    <style>
+        input[type="checkbox"] {
+            transform: scale(1.8); /* Increase checkbox size */
+            margin-right: 10px;     /* Add some space after checkbox */
+            cursor: pointer;       /* Change cursor on hover */
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<body>
+    <h1>Smart Study Scheduler</h1>
+
+    <form method="POST" action="/">
+        <input type="text" name="task" placeholder="Enter task" required />
+        <input type="date" name="date" required />
+        <button type="submit">Add Task</button>
+    </form>
+
+    <h2>Your Tasks</h2>
+    <ol>
+    {% for task in tasks %}
+    <li class="task-item">
+        <input type="checkbox" onclick="toggleTask(this)">
+        
+        <span>
+            {{ task.date }}: {{ task.content }}
+        </span>
+
+        <a href="/edit/{{ task.id }}" style="color: blue; margin-left: 20px;">Edit</a>
+        <a href="/delete/{{ task.id }}" style="color: red; margin-left: 20px;">Delete</a>
+    </li>
+    {% else %}
+    <li>No tasks yet! Add one above.</li>
+    {% endfor %}
+</ol>
+<script>
+function toggleTask(checkbox) {
+    const span = checkbox.nextElementSibling;
+    if (checkbox.checked) {
+        span.style.color = 'green';
+        span.style.fontWeight = 'bold';
+    } else {
+        span.style.color = 'black';
+        span.style.fontWeight = 'normal';
+    }
+}
+</script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Smart Study Scheduler</title>
+</head>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<body>
+    <h1>Smart Study Scheduler</h1>
+
+    <form method="POST" action="/">
+        <input type="text" name="task" placeholder="Enter task" required />
+        <input type="date" name="date" required />
+        <button type="submit">Add Task</button>
+    </form>
+
+    <h2>Your Tasks</h2>
+    <ol>
+    {% for task in tasks %}
+    <li class="task-item">
+        <input type="checkbox" onclick="toggleTask(this)">
+        
+        <span>
+            {{ task.date }}: {{ task.content }}
+        </span>
+
+        <a href="/edit/{{ task.id }}" style="color: blue; margin-left: 20px;">Edit</a>
+        <a href="/delete/{{ task.id }}" style="color: red; margin-left: 20px;">Delete</a>
+    </li>
+    {% else %}
+    <li>No tasks yet! Add one above.</li>
+    {% endfor %}
+</ol>
+<script>
+function toggleTask(checkbox) {
+    const span = checkbox.nextElementSibling;
+    if (checkbox.checked) {
+        span.style.color = 'green';
+        span.style.fontWeight = 'bold';
+    } else {
+        span.style.color = 'black';
+        span.style.fontWeight = 'normal';
+    }
+}
+</script>
+</body>
+</html> -->
+
