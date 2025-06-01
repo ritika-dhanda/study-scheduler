@@ -2,5 +2,3 @@ Flask==2.2.5
 gunicorn==20.1.0
 keras==2.11.0
 tensorflow==2.11.0
-# Add any other packages you’re using
-
